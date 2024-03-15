@@ -51,47 +51,43 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
       top: 0,
       behavior: 'smooth',
     });
-  }, [currentPage]); // This effect depends on `currentPage`
+  }, [currentPage]);
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col justify-between min-h-screen">
-        <div className="flex flex-wrap flex-row">
-          <div className="w-1/2">
-            <h1 className="flex flex-start py-6 text-3xl font-bold text-slate-800">
+      <div className="flex flex-col min-h-screen w-full gap-6">
+        <div className="flex flex-wrap sm:flex-col px-4 sm:px-6 lg:px-8 lg:flex-row">
+          <div className="w-full lg:w-1/2 py-6">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 lg:text-left text-center">
               Pokemon Collection
             </h1>
           </div>
-          <div className="w-1/2 flex justify-end self-center">
-            <form>
-              <label className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+          <div className="w-full flex justify-center lg:justify-end lg:w-1/2 self-center">
+            <form className="w-lg sm:max-w-xs">
+              <label className="sr-only">Search</label>
               <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3">
-                  <MagnifyingGlassIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <MagnifyingGlassIcon className="w-5 h-5 text-gray-500" />
                 </div>
                 <input
                   type="text"
-                  className="block max-w-40 p-4 ps-10 text-sm text-slate-300 border rounded-lg bg-gray-700"
+                  className="block w-full p-2 pl-10 text-sm border rounded-lg bg-gray-700 text-slate-300"
                   value={searchText}
-                  autoComplete="off"
-                  id="pokemonName"
-                  placeholder="Search"
                   onChange={(e) => setSearchText(e.target.value)}
+                  placeholder="Search"
                 />
               </div>
             </form>
           </div>
         </div>
-        <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left gap-6">
-          {paginatedPokemonList.map((pokemon: any) => {
-            return (
-              <PokemonCard
-                name={pokemon.name}
-                pokemonImageURL={pokemon.spriteUrl}
-                key={pokemon.name + 'Card'}
-              />
-            );
-          })}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 sm:px-6 lg:px-8 justify-items-center">
+          {paginatedPokemonList.map((pokemon: any) => (
+            <PokemonCard
+              name={pokemon.name}
+              pokemonImageURL={pokemon.spriteUrl}
+              key={pokemon.name + 'Card'}
+            />
+          ))}
         </div>
         <Pagination
           totalItems={filteredPokemonList.length}

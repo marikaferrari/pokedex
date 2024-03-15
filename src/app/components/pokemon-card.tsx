@@ -12,7 +12,7 @@ interface PokemonCardProps {
 
 // Component to display a single PK card
 export default function PokemonCard({ pokemonImageURL, name }: PokemonCardProps) {
-  console.log(pokemonImageURL);
+  // console.log(pokemonImageURL);
   return (
     <div className="w-60 rounded-lg shadow bg-gray-900">
       <div className="flex flex-col items-center py-8">

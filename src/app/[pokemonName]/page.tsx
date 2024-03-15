@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 // Fetch data from API
 import { getPokemon } from '../lib/pokemonAPI';
 
@@ -6,6 +8,7 @@ import { PokemonImage } from '../components/pokemon-image';
 
 // Shadcn/ui components
 import { Progress } from '@/app/components/ui/progress';
+import Loading from '../loading';
 
 export default async function PokemonPage({ params }: { params: { pokemonName: string } }) {
   // Object destructuring
@@ -14,49 +17,52 @@ export default async function PokemonPage({ params }: { params: { pokemonName: s
   // get the API data x PK's name
   const pokemonObject = await getPokemon(pokemonName);
 
-  console.log(pokemonObject);
+  // console.log(pokemonObject);
 
   return (
-    <div className="flex flex-wrap justify-evenly items-center flex-col min-h-screen">
-      <h1 className="text-left text-4xl font-bold text-slate-900">
-        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
-      </h1>
-      <div
-        className="flex flex-wrap lg:flex-row md:flex-col items-center justify-evenly gap-20 border border-slate-800 rounded-lg p-10 bg-cover bg-center"
-        style={{
-          backgroundImage: `url("https://i.pinimg.com/originals/62/24/7f/62247f857425ed3f71abfaffd77605af.jpg")`,
-        }}
-      >
-        <div className="relative justify-center w-72 h-72 pr-10">
-          <PokemonImage
-            image={pokemonObject.sprites.other['official-artwork'].front_default}
-            name={pokemonName}
-          />
-        </div>
-        <div className="flex-col">
-          <h3 className="ml-3 mb-4 text-slate-200 font-bold">Weight: {pokemonObject.weight}</h3>
-          {pokemonObject.stats.map((statObject: any) => {
-            const statName = statObject.stat.name;
-            const statValue = statObject.base_stat;
+    <Suspense fallback={<Loading />}>
+      <div className="flex flex-col justify-evenly items-center h-screen p-4">
+        <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-5">
+          {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+        </h1>
+        <div
+          className="flex flex-col md:flex-row items-center justify-evenly gap-4 md:gap-20 p-4 md:p-10 border border-slate-800 rounded-lg"
+          style={{
+            backgroundImage: `url("https://i.pinimg.com/originals/62/24/7f/62247f857425ed3f71abfaffd77605af.jpg")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="w-64 h-64 md:w-72 md:h-72 relative">
+            <PokemonImage
+              image={pokemonObject.sprites.other['official-artwork'].front_default}
+              name={pokemonName}
+            />
+          </div>
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-slate-200 font-bold">Weight: {pokemonObject.weight}</h3>
+            {pokemonObject.stats.map((statObject: any) => {
+              const statName = statObject.stat.name;
+              const statValue = statObject.base_stat;
 
-            return (
-              <div
-                className="flex items-stretch text-slate-200 font-bold"
-                style={{ width: '500px' }}
-                key={statName}
-              >
-                <h3 className="p-3 w-2/4">
-                  {statName.charAt(0).toUpperCase() + statName.slice(1)}: {statValue}
-                </h3>
-                <Progress
-                  className="w-2/4 m-auto bg-amber-500 border border-slate-700"
-                  value={statValue}
-                />
-              </div>
-            );
-          })}
+              return (
+                <div
+                  className="flex items-center text-slate-200 font-bold w-full sm:w-72 md:w-96 lg:w-500px my-2"
+                  key={statName}
+                >
+                  <h3 className="p-2 text-sm md:text-base flex-1">
+                    {statName.charAt(0).toUpperCase() + statName.slice(1)}: {statValue}
+                  </h3>
+                  <Progress
+                    className="flex-1 bg-amber-500 border border-slate-700"
+                    value={statValue}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 }

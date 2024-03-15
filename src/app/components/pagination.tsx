@@ -16,7 +16,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <div className="flex justify-center gap-4 py-6">
+    <div className="flex flex-wrap justify-center gap-4 py-6">
       {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
         <button
           key={page}
