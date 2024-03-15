@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
+// components
+import Navbar from './components/navbar';
+
 // Dark mode - Light mode switcher
 import { ThemeProvider } from './components/theme-provider';
 
@@ -21,7 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
+          <Navbar />
+          <main className="max-w-screen bg-slate-300 flex justify-center">{children}</main>
         </ThemeProvider>
       </body>
     </html>
