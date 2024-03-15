@@ -14,7 +14,7 @@ export async function getPokemonList(
   const pokemonDetailsPromises = listData.results.map(async (pokemon: any) => {
     const detailResponse = await fetch(pokemon.url);
     const detailData = await detailResponse.json();
-    console.log(detailData);
+    // console.log('Detail data:', detailData);
     return {
       name: pokemon.name,
       spriteUrl: detailData.sprites.other['official-artwork'].front_default,

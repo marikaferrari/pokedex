@@ -11,7 +11,7 @@ interface PokemonCardProps {
 }
 
 // Component to display a single PK card
-export function PokemonCard({ pokemonImageURL, name }: PokemonCardProps) {
+export default function PokemonCard({ pokemonImageURL, name }: PokemonCardProps) {
   console.log(pokemonImageURL);
   return (
     <div className="w-60 rounded-lg shadow bg-gray-900">
@@ -23,11 +23,10 @@ export function PokemonCard({ pokemonImageURL, name }: PokemonCardProps) {
         <h2 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </h2>
-
         <div className="flex mt-4 md:mt-6">
           <Link
             href={name}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-amber-500 rounded-lg"
+            className="inline-flex items-center px-4 py-2 text-sm text-center text-slate-900 font-bold bg-amber-500 rounded-lg"
             key={name + 'Card'}
           >
             Read more
