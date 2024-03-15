@@ -2,7 +2,7 @@
 import { getPokemonList } from './lib/pokemonAPI';
 
 // components
-import PokemonGrid from './components/pokemon-grid';
+import { PokemonGrid } from './components/pokemon-grid';
 
 export default async function Home() {
   // Load in data.

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
+// Component to display Pokemon's portraits
 export function PokemonImage({ image, name }: { image: string; name: string }) {
   const [loaded, setLoaded] = useState(false);
 
