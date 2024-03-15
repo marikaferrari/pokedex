@@ -5,8 +5,8 @@ import { getPokemonList } from './lib/pokemonAPI';
 import { PokemonGrid } from './components/pokemon-grid';
 
 export default async function Home() {
-  // Load in data.
-  const pokemonList = await getPokemonList();
+  // Load in data for every Pokemon
+  const pokemonList = await getPokemonList(151);
 
   return <PokemonGrid pokemonList={pokemonList} />;
 }

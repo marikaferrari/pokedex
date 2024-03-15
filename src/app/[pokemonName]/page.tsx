@@ -10,8 +10,8 @@ import { Progress } from '@radix-ui/react-progress';
 export default async function PokemonPage({ params }: { params: { pokemonName: string } }) {
   // Object destructuring
   const { pokemonName } = params;
-  // pikachu
-  // get the API data for pikachu
+
+  // get the API data x PK's name
   const pokemonObject = await getPokemon(pokemonName);
 
   console.log(pokemonObject);
@@ -38,7 +38,7 @@ export default async function PokemonPage({ params }: { params: { pokemonName: s
               <h3 className="p-3 w-2/4">
                 {statName}: {statValue}
               </h3>
-              <Progress className="w-2/4 m-auto" value={statValue} />
+              {/* <Progress className="w-2/4 m-auto" value={statValue} /> */}
             </div>
           );
         })}

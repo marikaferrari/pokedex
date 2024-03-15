@@ -26,6 +26,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
   // save the filtered array of objects
   const filteredPokemonList = searchFilter(pokemonList);
+  console.log(filteredPokemonList);
 
   return (
     <div className="flex flex-col justify-between">
@@ -56,10 +57,15 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         </div>
       </div>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left gap-6">
-        {/* TODO: Fix image rendering  */}
-        {/* {filteredPokemonList.map((pokemon: any) => {
-          return <PokemonCard name={pokemon.name} key={pokemon.name + 'Card'} />;
-        })} */}
+        {filteredPokemonList.map((pokemon: any) => {
+          return (
+            <PokemonCard
+              name={pokemon.name}
+              pokemonImageURL={pokemon.spriteUrl}
+              key={pokemon.name + 'Card'}
+            />
+          );
+        })}
       </div>
     </div>
   );
