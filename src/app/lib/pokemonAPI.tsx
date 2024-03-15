@@ -15,6 +15,7 @@ export async function getPokemonList(
     const detailResponse = await fetch(pokemon.url);
     const detailData = await detailResponse.json();
     // console.log('Detail data:', detailData);
+
     return {
       name: pokemon.name,
       spriteUrl: detailData.sprites.other['official-artwork'].front_default,

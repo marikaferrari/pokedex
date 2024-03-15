@@ -23,7 +23,7 @@ This documentation outlines the development process and architecture of the Poke
 ## Project Structure
 
 - **Assets**: Static files such as the application logo.
-- **Components**: Reusable UI components like `navbar`, `pagination`, `pokemon-card`, `pokemon-grid`, `pokemon-image`, and `theme-provider`.
+- **Components**: Reusable UI components like `navbar`, `pagination`, `loading`, `pokemon-card`, `pokemon-grid`, `pokemon-image`, and `theme-provider`.
 - **Dynamic Pokemon Stats Page**: Implemented a dynamic Next.js page (`[page.tsx]`) to provide detailed statistics and abilities of each Pokemon, enhancing user engagement.
 - **Lib**: Utility library, including the API call to PokeAPI.
 - **Pages**: Custom error handling (`error.tsx` and `not-found.tsx`) as per Next.js documentation.

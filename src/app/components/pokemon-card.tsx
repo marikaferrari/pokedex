@@ -10,7 +10,6 @@ interface PokemonCardProps {
   name: string;
 }
 
-// Component to display a single PK card
 export default function PokemonCard({ pokemonImageURL, name }: PokemonCardProps) {
   // console.log(pokemonImageURL);
   return (

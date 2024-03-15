@@ -5,10 +5,10 @@ import { getPokemon } from '../lib/pokemonAPI';
 
 // components
 import { PokemonImage } from '../components/pokemon-image';
+import Loading from '../loading';
 
 // Shadcn/ui components
 import { Progress } from '@/app/components/ui/progress';
-import Loading from '../loading';
 
 export default async function PokemonPage({ params }: { params: { pokemonName: string } }) {
   // Object destructuring
@@ -27,7 +27,7 @@ export default async function PokemonPage({ params }: { params: { pokemonName: s
         </h1>
         {/* Card container */}
         <div
-          className="flex flex-col md:flex-row items-center justify-evenly gap-4 md:gap-20 p-4 md:p-10 border border-slate-400  rounded-lg shadow-xl"
+          className="flex flex-col md:flex-row items-center justify-evenly gap-4 md:gap-20 p-4 md:p-10 border border-slate-400 rounded-lg shadow-xl"
           style={{
             backgroundImage: `url("https://i.pinimg.com/originals/62/24/7f/62247f857425ed3f71abfaffd77605af.jpg")`,
             backgroundSize: 'cover',

@@ -19,7 +19,6 @@ interface PokemonGridProps {
   pokemonList: any;
 }
 
-// Component to render card component x Pokemon
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   // State to allow search functionality
   const [searchText, setSearchText] = useState('');
@@ -30,7 +29,6 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
     );
   };
 
-  // Save the filtered array of objects
   const filteredPokemonList = searchFilter(pokemonList);
   // console.log(filteredPokemonList);
 
@@ -44,9 +42,8 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
     currentPage * itemsPerPage
   );
 
-  // Hook to jump to the top of the page when moving though pages
+  // Hook to jump to the top of the page when moving through pages
   useEffect(() => {
-    // Scrolls to the top of the page smoothly
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
