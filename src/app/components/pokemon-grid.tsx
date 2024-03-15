@@ -48,7 +48,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
                 value={searchText}
                 autoComplete="off"
                 id="pokemonName"
-                placeholder="Charizard, Pikachu, etc."
+                placeholder="Search"
                 onChange={(e) => setSearchText(e.target.value)}
               />
             </div>
@@ -56,6 +56,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         </div>
       </div>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left gap-6">
+        {/* TODO: Fix image rendering  */}
         {filteredPokemonList.map((pokemon: any) => {
           return <PokemonCard name={pokemon.name} key={pokemon.name + 'Card'} />;
         })}
