@@ -55,10 +55,10 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between min-h-screen">
         <div className="flex flex-wrap flex-row">
           <div className="w-1/2">
-            <h1 className="flex flex-start py-6 text-xl font-bold text-slate-800">
+            <h1 className="flex flex-start py-6 text-3xl font-bold text-slate-800">
               Pokemon Collection
             </h1>
           </div>
@@ -71,7 +71,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
                 </div>
                 <input
                   type="text"
-                  className="block max-w-40 p-4 ps-10 text-sm text-slate-300 border border-gray-600 rounded-lg bg-gray-700 focus:ring-yellow-400 focus:border-yellow-400"
+                  className="block max-w-40 p-4 ps-10 text-sm text-slate-300 border rounded-lg bg-gray-700"
                   value={searchText}
                   autoComplete="off"
                   id="pokemonName"
