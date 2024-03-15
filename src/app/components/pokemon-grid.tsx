@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 
 // images
 // import logo from '../logo.jpg';
@@ -7,6 +7,7 @@ import React, { Suspense, useState } from 'react';
 // components
 // import { PokemonCard } from './pokemon-card';
 import Loading from '../loading';
+import { Pagination } from './pagination';
 
 // Lazy loading using React.lazy
 const PokemonCard = React.lazy(() => import('./pokemon-card'));
@@ -20,6 +21,7 @@ interface PokemonGridProps {
 
 // Component to render card component x Pokemon
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
+  // State to allow search functionality
   const [searchText, setSearchText] = useState('');
   //   console.log(pokemonList);
   const searchFilter = (pokemonList: any) => {
@@ -28,9 +30,28 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
     );
   };
 
-  // save the filtered array of objects
+  // Save the filtered array of objects
   const filteredPokemonList = searchFilter(pokemonList);
-  console.log(filteredPokemonList);
+  // console.log(filteredPokemonList);
+
+  // State for pagination feature
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  // Calculate the slice of Pokémon to display based on the current page
+  const paginatedPokemonList = filteredPokemonList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Hook to jump to the top of the page when moving though pages
+  useEffect(() => {
+    // Scrolls to the top of the page smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]); // This effect depends on `currentPage`
 
   return (
     <Suspense fallback={<Loading />}>
@@ -62,7 +83,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
           </div>
         </div>
         <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left gap-6">
-          {filteredPokemonList.map((pokemon: any) => {
+          {paginatedPokemonList.map((pokemon: any) => {
             return (
               <PokemonCard
                 name={pokemon.name}
@@ -72,6 +93,12 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
             );
           })}
         </div>
+        <Pagination
+          totalItems={filteredPokemonList.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </Suspense>
   );
