@@ -55,7 +55,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col min-h-screen w-full gap-6">
+      <div className="flex flex-col min-h-screen w-full gap-6 md:gap-0">
         <div className="flex flex-wrap sm:flex-col px-4 sm:px-6 lg:px-8 lg:flex-row">
           <div className="w-full lg:w-1/2 py-6">
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 lg:text-left text-center">

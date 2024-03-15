@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Navbar />
-          <main className="min-h-screen w-full bg-slate-300 flex flex-wrap items-center justify-center p-4 md:p-8">
+          <main className="min-h-screen w-full bg-slate-300 flex flex-wrap items-center justify-center">
             {children}
           </main>
         </ThemeProvider>
