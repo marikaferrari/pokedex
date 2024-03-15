@@ -1,5 +1,12 @@
-import Image from 'next/image';
+// API function
+import { getPokemonList } from './lib/pokemonAPI';
 
-export default function Home() {
-  return <main>Hello</main>;
+// components
+import PokemonGrid from './components/pokemon-grid';
+
+export default async function Home() {
+  // Load in data.
+  const pokemonList = await getPokemonList();
+
+  return <PokemonGrid pokemonList={pokemonList} />;
 }
