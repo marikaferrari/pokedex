@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokedex App
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This documentation outlines the development process and architecture of the Pokedex app, designed to display a list of Pokemon, but also individual Pokemon and their abilities, in an intuitive interface.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technology Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js**
+- **TailwindCSS**
+- **Radix-UI**
+- **Shadcn/ui**: Employed for the Progress component, enhancing feedback on data loading.
+- **Vercel**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **List View with Lazy Loading**: Enhances performance and user experience by loading Pokemon data as needed.
+- **Detailed Pokemon View**: Click on a Pokemon to view its abilities, stats, and more.
+- **Search Functionality**: Easily find Pokemon with a dynamic search feature.
+- **Responsive Design**: TailwindCSS ensures the app looks great on all devices.
+- **Pagination**: For enhanced user experience.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- **Assets**: Static files such as the application logo.
+- **Components**: Reusable UI components like `navbar`, `pagination`, `pokemon-card`, `pokemon-grid`, `pokemon-image`, and `theme-provider`.
+- **Dynamic Pokemon Stats Page**: Implemented a dynamic Next.js page (`[page.tsx]`) to provide detailed statistics and abilities of each Pokemon, enhancing user engagement.
+- **Lib**: Utility library, including the API call to PokeAPI.
+- **Pages**: Custom error handling (`error.tsx` and `not-found.tsx`) as per Next.js documentation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This app is deployed on Vercel for optimal performance and scalability. Check it out live here: [Pokedex](https://pokedex-rho-gold.vercel.app/).
 
-## Deploy on Vercel
+## Future Enhancements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **UI Interactivity**: Implementing more interactive elements for an engaging user experience.
+- **Performance Optimization**: Further optimization of lazy loading and image rendering.
+- **Light Mode Theme**: The groundwork has been laid with `ThemeProvider` for implementing a light mode as a stretch goal, enhancing accessibility and user preference options.
+- **Pokemon Card Background**: As a fun stretch goal, I'm considering transforming the cards' background into a dynamic Pokemon card theme. This would add a playful element to the user interface.
+- **Further Refactoring**: It never hurts.
